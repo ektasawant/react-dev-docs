@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { ListItemTagComponent } from './ListItemTagComponent';
 import { EmptyStateComponent } from './EmptyStateComponent';
 import TemporaryDrawer from '../pages/temporaryDrawer';
 import * as colors from '@brightlayer-ui/colors';
@@ -79,7 +80,8 @@ export default function BasicTabs() {
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Box sx={PreviewContainerStyles}>
-            <EmptyStateComponent />
+            <ListItemTagComponent />
+            <EmptyStateComponent/>
             <TemporaryDrawer />
         </Box>
         

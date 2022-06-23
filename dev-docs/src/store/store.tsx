@@ -5,6 +5,7 @@ const store = configureStore({
   reducer: { 
     books: componentsReducer,
     emptyStateComponent: componentsReducer,
+    listItemTagComponent: componentsReducer,
   },
 });
 
