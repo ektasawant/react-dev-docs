@@ -1,12 +1,17 @@
 import React from 'react';
 import { ListItemTag } from '@brightlayer-ui/react-components';
 import { useSelector}  from 'react-redux';
+import { Box } from '@mui/material';
 
-// interface listItemProps {
-//     label: string;
-//     backgroundColor: string;
-//     fontColor: string
-//   }
+const ListItemContainerStyles = {
+    height: '100%',
+    display: 'flex',
+    minHeight: '100%',
+    textAlign: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+};
 
 export const ListItemTagComponent = (): JSX.Element => {
     
@@ -14,40 +19,20 @@ export const ListItemTagComponent = (): JSX.Element => {
         return state.listItemTagComponent.listItemTagComponent[0];
     });
 
-    function passProps() {
-        const a: { [key: string]: any } = {
-            label: null,
-            backgroundColor: null,
-            fontColor: null,
-          };
-        
-        listItemTagJson.children.map((res: any) => {
-            console.log(res);
-            a[res.fieldName] = res[res.fieldName];
-        })
+    function passProps(listItemTagJson: any) {
+        const a = listItemTagJson.children.reduce((acc:any, cur:any) => ({ ...acc, [cur.fieldName]: cur.inputText }), {})
         return a;
-        
     }
 
-    console.log(passProps());
     function renderListItemTag(listItemTagJson: any) {
-        console.log('listItemTagJson',listItemTagJson);
-        const aaa = passProps();
-        console.log('aaa', aaa)
-        const ab = {label: 'ListitemTag', backgroundColor: 'black', fontColor: 'gold'};
-        return React.createElement(ListItemTag, ab);
+        return React.createElement(ListItemTag, passProps(listItemTagJson));
     }
-
-    console.log('listItemTagJson', listItemTagJson);
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-            <div style={{ flex: '1 1 0px' }}>
-                {/* <ListItemTag
-                    label={'dd'}
-                /> */}
+            <Box sx={ListItemContainerStyles}>
                 {renderListItemTag(listItemTagJson)}
-            </div>
+            </Box>
         </div>
     );
 };

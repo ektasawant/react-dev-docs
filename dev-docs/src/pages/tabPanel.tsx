@@ -81,7 +81,7 @@ export default function BasicTabs() {
       <TabPanel value={value} index={2}>
         <Box sx={PreviewContainerStyles}>
             <ListItemTagComponent />
-            <EmptyStateComponent/>
+            {/* <EmptyStateComponent/> */}
             <TemporaryDrawer />
         </Box>
         

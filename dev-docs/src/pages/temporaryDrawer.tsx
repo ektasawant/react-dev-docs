@@ -18,10 +18,6 @@ export default function TemporaryDrawer() {
   const emptyStateJson = useSelector((state:any) => {
     return state.emptyStateComponent.emptyStateComponent[0];
   });
-  
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>): void => {
-  
-  };
 
   function listItem() {
     return React.createElement(ListItemTag, { label: 'a prop' });
@@ -61,7 +57,6 @@ export default function TemporaryDrawer() {
           value={emptyStateJson.data.field2.inputText}
           label={emptyStateJson.data.field2.fieldName}
           helperText={emptyStateJson.data.field2.helperText}
-          onChange={handleChange}
       />
       <TextField
           sx={{width: '100%'}}
