@@ -3,6 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { 
   showEmptyStateComponent,
   showListItemTagComponent,
+  updateListTagComponent,
 } from '../actions/componentActions';
 import emptyStateJson from '../../componentJson/EmptyStateJson';
 import listItemTagJson from '../../componentJson/ListItemTagJson';
@@ -20,6 +21,9 @@ const booksReducer = createReducer(initialState, (builder) => {
     })
     .addCase(showListItemTagComponent, (state, action:any) => {
       state.listItemTagComponent.push(action.payload);
+    })
+    .addCase(updateListTagComponent, (state, action:any) => {
+      state.listItemTagComponent = state.listItemTagComponent.filter((listItemTagComponent) => listItemTagComponent !== action.payload);
     })
 });
 

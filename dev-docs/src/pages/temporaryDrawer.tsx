@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import { TextField } from '@mui/material';
 import { useSelector}  from 'react-redux';
+// import { useDispatch } from 'react-redux';
+// import { updateListTagComponent } from '../store/actions/componentActions';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
@@ -13,26 +15,31 @@ export default function TemporaryDrawer() {
     bottom: false,
     right: true,
   });
-
+  // const dispatch = useDispatch();
   const listItemTagJson = useSelector((state:any) => {
     return state.listItemTagComponent.listItemTagComponent[0];
   });
 
   const renderInputs = () => {
-    return listItemTagJson.children.map((entry:any) => renderInput(entry));
+    return listItemTagJson.children.map((entry:any, index:number) => renderInput(entry, index));
   }
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>, index: number): void => {
+    const newState = listItemTagJson.children.map((obj:any, id: number) =>
+      id === index ? { ...obj, inputText: event.target.value } : obj
+    );
+  };
 
-  const renderInput = (entry: any) => {
+  const renderInput = (entry: any, index: number) => {
     return(
-        React.createElement(
-          TextField,
-          {
-            variant: 'filled',
-            value:entry.inputText,
-            label:entry.fieldName,
-            helperText:entry.helperText,
-            sx:{width:'100%'}
-          })
+        <TextField
+          key={index}
+          variant = 'filled'
+          value = {entry.inputText}
+          label = {entry.fieldName}
+          helperText = {entry.helperText}
+          sx={{width: '100%'}}
+          onChange={(event) => handleChange(event, index)}
+        />
     )
   }
 
