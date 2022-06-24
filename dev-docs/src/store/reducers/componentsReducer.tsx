@@ -1,29 +1,21 @@
 import { createReducer } from '@reduxjs/toolkit';
 
 import { 
-  showEmptyStateComponent,
-  showListItemTagComponent,
   updateListTagComponent,
 } from '../actions/componentActions';
-import emptyStateJson from '../../componentJson/EmptyStateJson';
+
 import listItemTagJson from '../../componentJson/ListItemTagJson';
 
 const initialState = { 
-  books: [],
-  emptyStateComponent: emptyStateJson,
   listItemTagComponent: listItemTagJson,
 };
 
 const booksReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(showEmptyStateComponent, (state, action:any) => {
-      state.emptyStateComponent.push(action.payload);
-    })
-    .addCase(showListItemTagComponent, (state, action:any) => {
-      state.listItemTagComponent.push(action.payload);
-    })
     .addCase(updateListTagComponent, (state, action:any) => {
-      state.listItemTagComponent = state.listItemTagComponent.filter((listItemTagComponent) => listItemTagComponent !== action.payload);
+      const newArray = state.listItemTagComponent;
+      newArray[0].children = action.payload.listItemTagJson;
+      state.listItemTagComponent = { ...state.listItemTagComponent, ...newArray };
     })
 });
 

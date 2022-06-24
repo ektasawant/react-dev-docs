@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import { TextField } from '@mui/material';
 import { useSelector}  from 'react-redux';
-// import { useDispatch } from 'react-redux';
-// import { updateListTagComponent } from '../store/actions/componentActions';
+import { useDispatch } from 'react-redux';
+import { updateListTagComponent } from '../store/actions/componentActions';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
@@ -15,7 +15,7 @@ export default function TemporaryDrawer() {
     bottom: false,
     right: true,
   });
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const listItemTagJson = useSelector((state:any) => {
     return state.listItemTagComponent.listItemTagComponent[0];
   });
@@ -27,6 +27,7 @@ export default function TemporaryDrawer() {
     const newState = listItemTagJson.children.map((obj:any, id: number) =>
       id === index ? { ...obj, inputText: event.target.value } : obj
     );
+    dispatch(updateListTagComponent(newState))
   };
 
   const renderInput = (entry: any, index: number) => {
