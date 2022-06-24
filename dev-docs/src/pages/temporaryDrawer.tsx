@@ -7,13 +7,10 @@ import { useDispatch } from 'react-redux';
 import { updateListTagComponent } from '../store/actions/componentActions';
 import { listItemTagPropItem } from '../componentJson/ListItemTagJson';
 
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
+type Anchor = 'right';
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
     right: true,
   });
   const dispatch = useDispatch();
@@ -70,7 +67,7 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      {(['left', 'right', 'top', 'bottom'] as const).map((anchor) => (
+      {(['right'] as const).map((anchor) => (
         <React.Fragment key={anchor}>
           <Drawer
             PaperProps={{
