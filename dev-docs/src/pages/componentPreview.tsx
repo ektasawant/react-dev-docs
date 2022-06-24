@@ -38,7 +38,7 @@ export const ComponentPreview = (): JSX.Element => {
                         </IconButton>
                     )}
                     <Typography variant={'h6'} color={'inherit'}>
-                        Empty State
+                        Component Preview
                     </Typography>
                 </Toolbar>
             </AppBar>

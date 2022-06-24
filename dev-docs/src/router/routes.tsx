@@ -10,8 +10,8 @@ export const PAGES = [
         icon: Home,
     },
     {
-        title: 'Empty State',
-        route: 'empty-state',
+        title: 'Component preview',
+        route: 'component-preview',
         component: ComponentPreview,
         icon: LooksOne,
     },
