@@ -19,12 +19,12 @@ export const ListItemTagComponent = (): JSX.Element => {
         return state.listItemTagComponent.listItemTagComponent[0];
     });
 
-    function passProps(listItemTagJson: any) {
+    function passProps(listItemTagJson: { children: any[]; }) {
         const a = listItemTagJson.children.reduce((acc:any, cur:any) => ({ ...acc, [cur.fieldName]: cur.inputText }), {})
         return a;
     }
 
-    function renderListItemTag(listItemTagJson: any) {
+    function renderListItemTag(listItemTagJson: { children: any[]; }) {
         return React.createElement(ListItemTag, passProps(listItemTagJson));
     }
 

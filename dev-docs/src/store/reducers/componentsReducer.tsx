@@ -10,7 +10,7 @@ const initialState = {
   listItemTagComponent: listItemTagJson,
 };
 
-const booksReducer = createReducer(initialState, (builder) => {
+const componentReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(updateListTagComponent, (state, action:any) => {
       const newArray = state.listItemTagComponent;
@@ -19,4 +19,4 @@ const booksReducer = createReducer(initialState, (builder) => {
     })
 });
 
-export default booksReducer;
+export default componentReducer;

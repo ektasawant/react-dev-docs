@@ -5,6 +5,7 @@ import { TextField } from '@mui/material';
 import { useSelector}  from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { updateListTagComponent } from '../store/actions/componentActions';
+import { listItemTagPropItem } from '../componentJson/ListItemTagJson';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
@@ -21,24 +22,24 @@ export default function TemporaryDrawer() {
   });
 
   const renderInputs = () => {
-    return listItemTagJson.children.map((entry:any, index:number) => renderInput(entry, index));
+    return listItemTagJson.children.map((entry:listItemTagPropItem, index:number) => renderInput(entry, index));
   }
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>, index: number): void => {
-    const newState = listItemTagJson.children.map((obj:any, id: number) =>
+    const newState = listItemTagJson.children.map((obj:listItemTagPropItem, id: number) =>
       id === index ? { ...obj, inputText: event.target.value } : obj
     );
     dispatch(updateListTagComponent(newState))
   };
 
-  const renderInput = (entry: any, index: number) => {
+  const renderInput = (entry: listItemTagPropItem, index: number) => {
     return(
         <TextField
           key={index}
           variant = 'filled'
           value = {entry.inputText}
-          label = {entry.fieldName}
+          label = {entry.label}
           helperText = {entry.helperText}
-          sx={{width: '100%'}}
+          sx={{width: '100%', m: '8px 0'}}
           onChange={(event) => handleChange(event, index)}
         />
     )
