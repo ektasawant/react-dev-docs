@@ -18,7 +18,13 @@ import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import store from './store/store';
+import { MDXProvider } from '@mdx-js/react';
+
 const container = document.getElementById('root');
+// const components = {
+//     em: (props: any) => <i {...props} />
+// }
+
 if (!container) throw new Error('Root Element was not found in the DOM');
 
 const root = ReactDOMClient.createRoot(container);
@@ -29,7 +35,9 @@ root.render(
             <BrowserRouter>
                 <CssBaseline />
                 <Provider store={store}>
-                    <App />
+                    <MDXProvider>
+                        <App />
+                    </MDXProvider>
                 </Provider>
             </BrowserRouter>
         </ThemeProvider>

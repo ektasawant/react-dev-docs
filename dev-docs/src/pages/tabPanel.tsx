@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { ListItemTagComponent } from './ListItemTagComponent';
+import { ListItemTagComponentDoc } from './ListItemTagComponentDoc';
 import TemporaryDrawer from '../pages/temporaryDrawer';
 import * as colors from '@brightlayer-ui/colors';
 
@@ -54,7 +55,7 @@ function a11yProps(index: number) {
 }
 
 export default function BasicTabs() {
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState(1);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -64,17 +65,19 @@ export default function BasicTabs() {
     
     <Box sx={{ width: '100%' }}>
       <Box sx={{ bgcolor: 'background.paper', borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered sx={{ width: '75%', bgcolor:colors.blue[200] }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered sx={{ width: value === 2 ? '75%' : '100%', bgcolor:colors.blue[200] }}>
           <Tab sx={{ width: '33%' }} label="Examples" {...a11yProps(0)} disabled />
-          <Tab sx={{ width: '33%' }} label="API Ground" {...a11yProps(1)} disabled />
+          <Tab sx={{ width: '33%' }} label="API Ground" {...a11yProps(1)} />
           <Tab sx={{ width: '33%' }} label="Playground" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-
+        <Box sx={PreviewContainerStyles}>
+            
+        </Box>
       </TabPanel>
       <TabPanel value={value} index={1}>
-
+        <ListItemTagComponentDoc/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Box sx={PreviewContainerStyles}>
