@@ -61,7 +61,7 @@ export default function TemporaryDrawer() {
       sx={{ width: 375, p: 2 }}
       role="presentation"
     >
-     <div>{renderInputs()}</div>
+      <div>{renderInputs()}</div>
     </Box>
   );
 

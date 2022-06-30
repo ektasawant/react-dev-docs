@@ -21,9 +21,6 @@ import store from './store/store';
 import { MDXProvider } from '@mdx-js/react';
 
 const container = document.getElementById('root');
-// const components = {
-//     em: (props: any) => <i {...props} />
-// }
 
 if (!container) throw new Error('Root Element was not found in the DOM');
 
