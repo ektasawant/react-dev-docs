@@ -17,7 +17,7 @@ import '@brightlayer-ui/react-themes/open-sans';
 import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import store from './store/store';
+import { store } from './redux/store';
 import { MDXProvider } from '@mdx-js/react';
 
 const container = document.getElementById('root');
