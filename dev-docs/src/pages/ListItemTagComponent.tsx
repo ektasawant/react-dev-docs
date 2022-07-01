@@ -14,7 +14,7 @@ const ListItemContainerStyles = {
 };
 
 export const ListItemTagComponent = (): JSX.Element => {
-    const listItemTagJson = useSelector((state: RootState) => state.counter.listItemTagComponent[0])
+    const listItemTagJson = useSelector((state: RootState) => state.listItemTagComponentData.listItemTagComponent[0])
     function passProps(listItemTagJson: { children: any[]; }) {
         const a = listItemTagJson.children.reduce((acc: any, cur: any) => ({ ...acc, [cur.fieldName]: cur.inputText }), {})
         return a;

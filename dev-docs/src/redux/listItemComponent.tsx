@@ -5,7 +5,7 @@ const initialState = {
   listItemTagComponent: listItemTagJson,
 };
 
-export const counterSlice = createSlice({
+export const listItemTagSlice = createSlice({
   name: 'listItemTagComponent',
   initialState,
   reducers: {
@@ -18,6 +18,6 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { updateListTagComponent } = counterSlice.actions
+export const { updateListTagComponent } = listItemTagSlice.actions
 
-export default counterSlice.reducer
+export default listItemTagSlice.reducer

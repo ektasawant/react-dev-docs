@@ -4,7 +4,7 @@ import Drawer from '@mui/material/Drawer';
 import { TextField } from '@mui/material';
 import { useSelector}  from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { updateListTagComponent } from '../redux/counter';
+import { updateListTagComponent } from '../redux/listItemComponent';
 import { listItemTagPropItem } from '../componentJson/ListItemTagJson';
 import { RootState } from '../redux/store';
 
@@ -15,7 +15,7 @@ export default function TemporaryDrawer() {
     right: true,
   });
   const dispatch = useDispatch();
-  const listItemTagJson = useSelector((state: RootState) => state.counter.listItemTagComponent[0])
+  const listItemTagJson = useSelector((state: RootState) => state.listItemTagComponentData.listItemTagComponent[0])
 
   const renderInputs = () => {
     return listItemTagJson.children.map((entry:listItemTagPropItem, index:number) => renderInput(entry, index));

@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './counter'
+import listItemTagComponentReducer from './listItemComponent'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    listItemTagComponentData: listItemTagComponentReducer,
   },
 })
 
