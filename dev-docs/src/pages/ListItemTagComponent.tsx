@@ -1,8 +1,9 @@
 import React from 'react';
 import { ListItemTag } from '@brightlayer-ui/react-components';
-import { useSelector } from 'react-redux';
 import { Box } from '@mui/material';
 import { RootState } from '../redux/store';
+import { useAppSelector } from '../redux/hooks';
+
 const ListItemContainerStyles = {
     height: '100%',
     display: 'flex',
@@ -14,7 +15,7 @@ const ListItemContainerStyles = {
 };
 
 export const ListItemTagComponent = (): JSX.Element => {
-    const listItemTagJson = useSelector((state: RootState) => state.listItemTagComponentData.listItemTagComponent[0])
+    const listItemTagJson = useAppSelector((state: RootState) => state.listItemTagComponentData.listItemTagComponent[0])
     function passProps(listItemTagJson: { children: any[]; }) {
         const a = listItemTagJson.children.reduce((acc: any, cur: any) => ({ ...acc, [cur.fieldName]: cur.inputText }), {})
         return a;
