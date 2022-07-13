@@ -2,27 +2,26 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import { TextField } from '@mui/material';
-import { useSelector}  from 'react-redux';
-import { useDispatch } from 'react-redux';
 import { updateListTagComponent } from '../redux/listItemComponent';
 import { listItemTagPropItem } from '../componentJson/ListItemTagJson';
 import { RootState } from '../redux/store';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 
 type Anchor = 'right';
 
-export default function TemporaryDrawer() {
+const TemporaryDrawer = () => {
   const [state, setState] = React.useState({
     right: true,
   });
-  const dispatch = useDispatch();
-  const listItemTagJson = useSelector((state: RootState) => state.listItemTagComponentData.listItemTagComponent[0])
+  const dispatch = useAppDispatch();
+  const listItemTagJson = useAppSelector((state: RootState) => state.listItemTagComponentData.listItemTagComponent[0])
 
   const renderInputs = () => {
     return listItemTagJson.children.map((entry:listItemTagPropItem, index:number) => renderInput(entry, index));
   }
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>, index: number): void => {
-    const newState = listItemTagJson.children.map((obj:listItemTagPropItem, id: number) =>
-      id === index ? { ...obj, inputText: event.target.value } : obj
+    const newState: listItemTagPropItem[] = listItemTagJson.children.map((obj:listItemTagPropItem, id: number) =>
+      id === index ? { ...obj, inputText: String(event.target.value) } : obj
     );
     dispatch(updateListTagComponent(newState))
   };
@@ -86,3 +85,5 @@ export default function TemporaryDrawer() {
     </div>
   );
 }
+
+export default TemporaryDrawer;
